@@ -22,7 +22,7 @@
   "entrypoint": "/usr/local/share/gascity/entrypoint.sh",
   "dependsOn": {
     "./features/homebrew": {
-      "packages": ["gastownhall/gascity/gascity", "dolt"]
+      "packages": ["gastownhall/gascity/gascity"]
     }
   },
   "installsAfter": [

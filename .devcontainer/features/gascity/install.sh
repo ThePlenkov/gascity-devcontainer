@@ -23,6 +23,12 @@ if [ ! -f "/usr/local/bin/gc" ]; then
     ln -sf /home/linuxbrew/.linuxbrew/bin/gc /usr/local/bin/gc
 fi
 
+# Add dolt to PATH
+if [ -f "/home/linuxbrew/.linuxbrew/bin/dolt" ]; then
+    echo "Creating symlink for dolt in /usr/local/bin..."
+    ln -sf /home/linuxbrew/.linuxbrew/bin/dolt /usr/local/bin/dolt
+fi
+
 # Add bd to PATH
 if [ -f "/home/linuxbrew/.linuxbrew/Cellar/beads/1.0.5/bin/bd" ]; then
     echo "Creating symlink for bd in /usr/local/bin..."
