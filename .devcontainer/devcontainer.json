@@ -6,9 +6,9 @@
       "installZsh": true,
       "installOhMyZsh": true,
       "upgradePackages": true
-    }
+    },
+    "./features/devin": {}
   },
-  "postCreateCommand": "bash .devcontainer/install-tools.sh",
   "customizations": {
     "vscode": {
       "extensions": [
