@@ -12,55 +12,6 @@
     "gas-city",
     "devin"
   ],
-  "options": {
-    "config": {
-      "type": "object",
-      "description": "Gas City configuration",
-      "properties": {
-        "autoStart": {
-          "type": "boolean",
-          "default": false,
-          "description": "Automatically start supervisor after installation"
-        },
-        "registerCity": {
-          "type": "boolean",
-          "default": false,
-          "description": "Automatically register city with supervisor"
-        },
-        "initCity": {
-          "type": "boolean",
-          "default": false,
-          "description": "Initialize city if not exists"
-        },
-        "configureDolt": {
-          "type": "boolean",
-          "default": false,
-          "description": "Configure Dolt identity for beads storage"
-        }
-      }
-    },
-    "buildPack": {
-      "type": "object",
-      "description": "Gas City build pack configuration",
-      "properties": {
-        "install": {
-          "type": "boolean",
-          "default": false,
-          "description": "Install gascity build pack from gastownhall/gascity-packs"
-        },
-        "url": {
-          "type": "string",
-          "default": "https://github.com/gastownhall/gascity-packs",
-          "description": "Build pack repository URL"
-        },
-        "branch": {
-          "type": "string",
-          "default": "main",
-          "description": "Build pack branch to install"
-        }
-      }
-    }
-  },
   "dependsOn": {
     "./features/homebrew": {
       "packages": ["gastownhall/gascity/gascity"]
