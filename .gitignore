@@ -4,10 +4,6 @@
 hooks/
 .runtime/
 
-# Devin CLI
-.devin/
-.config/devin/
-
 # Beads / Dolt files (added by bd init)
 .dolt/
 *.db

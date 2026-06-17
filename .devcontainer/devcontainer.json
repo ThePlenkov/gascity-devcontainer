@@ -16,8 +16,9 @@
   "mounts": [
     "source=${localWorkspaceFolder}/.gc,target=/workspaces/gascity-devcontainer/.gc,type=bind,consistency=cached",
     "source=${localWorkspaceFolder}/.beads,target=/workspaces/gascity-devcontainer/.beads,type=bind,consistency=cached",
-    "source=${localWorkspaceFolder}/.devin,target=/home/vscode/.devin,type=bind",
-    "source=${localWorkspaceFolder}/.config/devin,target=/home/vscode/.config/devin,type=bind"
+    "source=${localEnv:HOME}/.devin,target=/home/vscode/.devin,type=bind",
+    "source=${localEnv:HOME}/.config/devin,target=/home/vscode/.config/devin,type=bind",
+    "source=${localEnv:HOME}/.local/share/devin,target=/home/vscode/.local/share/devin,type=bind"
   ],
   "customizations": {
     "vscode": {
