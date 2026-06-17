@@ -17,19 +17,10 @@
       "type": "string",
       "default": "latest",
       "description": "Gas City version to install (latest or specific tag)"
-    },
-    "installDeps": {
-      "type": "boolean",
-      "default": true,
-      "description": "Install runtime dependencies (tmux, jq, git, lsof)"
-    },
-    "installDolt": {
-      "type": "boolean",
-      "default": true,
-      "description": "Install Dolt database for beads storage"
     }
   },
   "installsAfter": [
-    "ghcr.io/devcontainers/features/common-utils"
+    "ghcr.io/devcontainers/features/common-utils",
+    "./features/homebrew"
   ]
 }

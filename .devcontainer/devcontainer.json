@@ -7,6 +7,7 @@
       "installOhMyZsh": true,
       "upgradePackages": true
     },
+    "./features/homebrew": {},
     "./features/devin": {},
     "./features/gascity": {}
   },

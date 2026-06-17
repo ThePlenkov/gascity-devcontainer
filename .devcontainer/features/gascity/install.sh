@@ -4,35 +4,16 @@ set -e
 # Gas City Devcontainer Feature Installation Script
 
 VERSION=${VERSION:-"latest"}
-INSTALL_DEPS=${INSTALLDEPS:-"true"}
-INSTALL_DOLT=${INSTALLDOLT:-"true"}
 
 echo "Installing Gas City ${VERSION}..."
 
-# Install Homebrew for non-root user if not available
-if ! command -v brew &> /dev/null; then
-    echo "Installing Homebrew for non-root user..."
-    
-    # Create non-root user for Homebrew if running as root
-    if [ "$(id -u)" = "0" ]; then
-        # Install Linuxbrew as non-root user
-        export NONROOT_USER=vscode
-        export HOMEBREW_PREFIX=/home/linuxbrew/.linuxbrew
-        export HOMEBREW_CELLAR=/home/linuxbrew/.linuxbrew/Cellar
-        export HOMEBREW_REPOSITORY=/home/linuxbrew/.linuxbrew/Homebrew
-        export PATH="$HOMEBREW_PREFIX/bin:$PATH"
-        export MANPATH="$HOMEBREW_PREFIX/share/man:$MANPATH"
-        export INFOPATH="$HOMEBREW_PREFIX/share/info:$INFOPATH"
-        
-        # Install Homebrew non-interactively
-        sudo -u $NONROOT_USER /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || true
-    else
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || true
-    fi
-fi
-
-# Ensure Homebrew is in PATH
+# Ensure Homebrew is available (should be installed by homebrew feature)
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+
+if ! command -v brew &> /dev/null; then
+    echo "Error: Homebrew not found. Ensure homebrew feature is installed first."
+    exit 1
+fi
 
 # Install Gas City via Homebrew
 echo "Installing Gas City via Homebrew..."

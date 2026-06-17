@@ -1,0 +1,16 @@
+{
+  "id": "homebrew",
+  "version": "1.0.0",
+  "name": "Homebrew",
+  "description": "Install Homebrew package manager for Linux",
+  "documentationURL": "https://docs.brew.sh/Homebrew-on-Linux",
+  "license": "BSD-2-Clause",
+  "keywords": [
+    "package-manager",
+    "homebrew",
+    "linuxbrew"
+  ],
+  "installsAfter": [
+    "ghcr.io/devcontainers/features/common-utils"
+  ]
+}
