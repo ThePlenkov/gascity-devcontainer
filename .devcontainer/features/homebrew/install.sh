@@ -3,7 +3,7 @@ set -e
 
 # Homebrew Installation Script for Devcontainers
 
-PACKAGES=${PACKAGES:-""}
+PACKAGES=${PACKAGES:-$HOMEBREW_PACKAGES}
 
 echo "Installing Homebrew..."
 

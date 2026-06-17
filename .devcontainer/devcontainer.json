@@ -7,10 +7,7 @@
       "installOhMyZsh": true,
       "upgradePackages": true
     },
-    "./features/homebrew": {
-      "packages": ["gastownhall/gascity/gascity"]
-    },
-    "./features/devin": {}
+    "./features/gascity": {}
   },
   "customizations": {
     "vscode": {

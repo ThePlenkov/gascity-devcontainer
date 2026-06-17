@@ -1,0 +1,18 @@
+{
+  "id": "gascity",
+  "version": "1.0.0",
+  "name": "Gas City",
+  "description": "Install and validate Gas City - AI agent orchestration platform",
+  "documentationURL": "https://github.com/gastownhall/gascity",
+  "license": "MIT",
+  "keywords": [
+    "ai",
+    "agents",
+    "orchestration",
+    "gas-city",
+    "devin"
+  ],
+  "installsAfter": [
+    "ghcr.io/devcontainers/features/common-utils"
+  ]
+}
