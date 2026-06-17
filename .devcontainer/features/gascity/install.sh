@@ -23,6 +23,12 @@ if [ ! -f "/usr/local/bin/gc" ]; then
     ln -sf /home/linuxbrew/.linuxbrew/bin/gc /usr/local/bin/gc
 fi
 
+# Add bd to PATH
+if [ -f "/home/linuxbrew/.linuxbrew/Cellar/beads/1.0.5/bin/bd" ]; then
+    echo "Creating symlink for bd in /usr/local/bin..."
+    ln -sf /home/linuxbrew/.linuxbrew/Cellar/beads/1.0.5/bin/bd /usr/local/bin/bd
+fi
+
 # Copy entrypoint script to a location where it can be executed
 mkdir -p /usr/local/share/gascity
 cp scripts/entrypoint.sh /usr/local/share/gascity/entrypoint.sh

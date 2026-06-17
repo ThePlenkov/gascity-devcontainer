@@ -21,8 +21,8 @@ fi
 if [ "${AUTOREGISTER}" = "true" ]; then
     echo "Registering city with supervisor..."
     # Configure Dolt identity (required for gc register)
-    dolt config --global --add user.name "Devin"
-    dolt config --global --add user.email "devin@example.com"
+    dolt config --global --add user.name "DevContainer User"
+    dolt config --global --add user.email "devcontainer@localhost"
     gc register .
     echo "City registered and ready!"
 else

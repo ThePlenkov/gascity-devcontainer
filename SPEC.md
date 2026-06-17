@@ -58,8 +58,9 @@ The `install.sh` script runs during the container image build:
 
 1. Validates that `gc` is installed via Homebrew (via `dependsOn`)
 2. Creates symlink for global accessibility (`/usr/local/bin/gc`)
-3. Copies `entrypoint.sh` to `/usr/local/share/gascity/entrypoint.sh`
-4. **Persists autoRegister option** to file for runtime access:
+3. Creates symlink for `bd` (beads daemon) for global accessibility (`/usr/local/bin/bd`)
+4. Copies `entrypoint.sh` to `/usr/local/share/gascity/entrypoint.sh`
+5. **Persists autoRegister option** to file for runtime access:
    - `AUTOREGISTER` → `/usr/local/share/gascity/autoregister_enabled`
 
 **Key insight:** The `autoRegister` option from `devcontainer-feature.json` is available as an environment variable during install.sh execution but not during entrypoint execution. Persisting it to a file bridges this gap.
@@ -78,8 +79,8 @@ The `entrypoint.sh` script runs at container startup:
 3. If `AUTOREGISTER=true`, registers city with supervisor:
    ```bash
    # Configure Dolt identity (required for gc register)
-   dolt config --global --add user.name "Devin"
-   dolt config --global --add user.email "devin@example.com"
+   dolt config --global --add user.name "DevContainer User"
+   dolt config --global --add user.email "devcontainer@localhost"
    gc register .
    ```
 
@@ -108,6 +109,7 @@ This ensures:
 - Homebrew is installed first
 - Gas City CLI (`gc`) is installed via Homebrew
 - Dolt database is installed via Homebrew (required for Gas City beads store)
+- Beads daemon (`bd`) is installed via Homebrew (required for city lifecycle)
 - Correct installation order is enforced
 
 ## Usage Example
@@ -212,7 +214,7 @@ All operations are designed to be idempotent:
 ### Security Considerations
 
 - No secrets or credentials persisted
-- Dolt identity uses placeholder values (Devin/devin@example.com)
+- Dolt identity uses neutral placeholder values (DevContainer User/devcontainer@localhost)
 - All operations run as container user (not root)
 - No external network calls during initialization
 
@@ -258,5 +260,6 @@ All operations are designed to be idempotent:
 
 ## Version History
 
-- **1.0.0** (2026-06-17): Initial specification with install.sh + entrypoint pattern
+- **1.2.0** (2026-06-17): Add bd symlink for beads daemon, use neutral Dolt identity (DevContainer User/devcontainer@localhost)
 - **1.1.0** (2026-06-17): Add autoRegister option with entrypoint, add dolt dependency, simplify .gitignore
+- **1.0.0** (2026-06-17): Initial specification with install.sh + entrypoint pattern
