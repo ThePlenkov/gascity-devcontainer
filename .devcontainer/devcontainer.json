@@ -12,6 +12,10 @@
     }
   },
   "forwardPorts": [8080],
+  "mounts": [
+    "source=${localWorkspaceFolder}/.gc,target=/workspaces/gascity-devcontainer/.gc,type=bind,consistency=cached",
+    "source=${localWorkspaceFolder}/.beads,target=/workspaces/gascity-devcontainer/.beads,type=bind,consistency=cached"
+  ],
   "customizations": {
     "vscode": {
       "extensions": [

@@ -113,6 +113,24 @@ This ensures:
 - Dependencies (dolt, beads, jq, tmux, flock) are installed automatically via Homebrew
 - Correct installation order is enforced
 
+### Data Persistence
+
+The devcontainer configuration includes explicit mounts for Gas City data directories:
+
+```json
+"mounts": [
+  "source=${localWorkspaceFolder}/.gc,target=/workspaces/gascity-devcontainer/.gc,type=bind,consistency=cached",
+  "source=${localWorkspaceFolder}/.beads,target=/workspaces/gascity-devcontainer/.beads,type=bind,consistency=cached"
+]
+```
+
+**Why explicit mounts:**
+- `.gc/` contains city state, events, and runtime data
+- `.beads/` contains Dolt database and agent interactions
+- `consistency=cached` improves performance for database operations
+- Guarantees data persistence across container rebuilds
+- Separates data from code for cleaner workspace
+
 ## Usage Example
 
 ### Complete devcontainer.json
@@ -132,6 +150,10 @@ This ensures:
     }
   },
   "forwardPorts": [8080],
+  "mounts": [
+    "source=${localWorkspaceFolder}/.gc,target=/workspaces/gascity-devcontainer/.gc,type=bind,consistency=cached",
+    "source=${localWorkspaceFolder}/.beads,target=/workspaces/gascity-devcontainer/.beads,type=bind,consistency=cached"
+  ],
   "customizations": {
     "vscode": {
       "extensions": [
@@ -262,6 +284,6 @@ All operations are designed to be idempotent:
 
 ## Version History
 
-- **1.2.0** (2026-06-17): Add symlinks for dolt, bd (beads daemon), and tmux, use neutral Dolt identity (DevContainer User/devcontainer@localhost), remove redundant dolt dependency (already included in gascity formula), add port forwarding for supervisor API (8080)
+- **1.2.0** (2026-06-17): Add symlinks for dolt, bd (beads daemon), and tmux, use neutral Dolt identity (DevContainer User/devcontainer@localhost), remove redundant dolt dependency (already included in gascity formula), add port forwarding for supervisor API (8080), add explicit mounts for .gc and .beads data persistence
 - **1.1.0** (2026-06-17): Add autoRegister option with entrypoint, add dolt dependency, simplify .gitignore
 - **1.0.0** (2026-06-17): Initial specification with install.sh + entrypoint pattern
