@@ -9,41 +9,43 @@ INSTALL_DOLT=${INSTALLDOLT:-"true"}
 
 echo "Installing Gas City ${VERSION}..."
 
-# Install dependencies if requested
-if [ "$INSTALL_DEPS" = "true" ]; then
-    echo "Installing dependencies..."
-    apt-get update -y
-    apt-get install -y \
-        curl \
-        git \
-        tmux \
-        jq \
-        lsof \
-        socat
-    # Try to install ICU libraries, but don't fail if not available
-    apt-get install -y libicu74 || apt-get install -y libicu-dev || echo "ICU libraries not available, skipping"
-    apt-get clean -y
-    rm -rf /var/lib/apt/lists/*
+# Install Homebrew for non-root user if not available
+if ! command -v brew &> /dev/null; then
+    echo "Installing Homebrew for non-root user..."
+    
+    # Create non-root user for Homebrew if running as root
+    if [ "$(id -u)" = "0" ]; then
+        # Install Linuxbrew as non-root user
+        export NONROOT_USER=vscode
+        export HOMEBREW_PREFIX=/home/linuxbrew/.linuxbrew
+        export HOMEBREW_CELLAR=/home/linuxbrew/.linuxbrew/Cellar
+        export HOMEBREW_REPOSITORY=/home/linuxbrew/.linuxbrew/Homebrew
+        export PATH="$HOMEBREW_PREFIX/bin:$PATH"
+        export MANPATH="$HOMEBREW_PREFIX/share/man:$MANPATH"
+        export INFOPATH="$HOMEBREW_PREFIX/share/info:$INFOPATH"
+        
+        # Install Homebrew non-interactively
+        sudo -u $NONROOT_USER /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || true
+    else
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || true
+    fi
 fi
 
-# Install Dolt if requested
-if [ "$INSTALL_DOLT" = "true" ]; then
-    echo "Installing Dolt..."
-    curl -fsSL https://github.com/dolthub/dolt/releases/latest/download/dolt-linux-amd64.tar.gz | tar -xz
-    mv dolt-linux-amd64/bin/* /usr/local/bin/
-    rm -rf dolt-linux-amd64
+# Ensure Homebrew is in PATH
+export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+
+# Install Gas City via Homebrew
+echo "Installing Gas City via Homebrew..."
+if [ "$(id -u)" = "0" ]; then
+    sudo -u vscode /home/linuxbrew/.linuxbrew/bin/brew install gastownhall/gascity/gascity || sudo -u vscode /home/linuxbrew/.linuxbrew/bin/brew upgrade gastownhall/gascity/gascity
+else
+    brew install gastownhall/gascity/gascity || brew upgrade gastownhall/gascity/gascity
 fi
 
-# Install Gas City binary
-echo "Installing Gas City binary..."
-# Get latest version from GitHub
-LATEST_VERSION=$(curl -s https://api.github.com/repos/gastownhall/gascity/releases/latest | grep '"tag_name"' | sed -E 's/.*"([^"]+)".*/\1/' || echo "v1.2.1")
-
-echo "Downloading Gas City ${LATEST_VERSION}..."
-curl -fsSL "https://github.com/gastownhall/gascity/releases/download/${LATEST_VERSION}/gascity_${LATEST_VERSION#v}_linux_amd64.tar.gz" -o /tmp/gascity.tar.gz
-tar -xzf /tmp/gascity.tar.gz -C /tmp/
-mv /tmp/gc /usr/local/bin/
-rm /tmp/gascity.tar.gz
+# Make gc available globally
+if [ -f "/home/linuxbrew/.linuxbrew/bin/gc" ] && [ ! -f "/usr/local/bin/gc" ]; then
+    ln -sf /home/linuxbrew/.linuxbrew/bin/gc /usr/local/bin/gc
+fi
 
 echo "Gas City installed successfully!"
 echo "Run 'gc --help' to get started"
