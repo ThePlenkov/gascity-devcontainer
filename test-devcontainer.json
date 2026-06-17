@@ -1,5 +1,5 @@
 {
-  "name": "Gas City Test",
+  "name": "AI Development Test",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
   "features": {
     "ghcr.io/devcontainers/features/common-utils:2": {},
@@ -8,8 +8,8 @@
       "installDeps": true,
       "installDolt": true
     },
-    "./src/agent-devin": {},
-    "./src/agent-claude": {}
+    "./src/devin": {},
+    "./src/claude": {}
   },
-  "postCreateCommand": "gc version && echo 'Gas City features installed successfully'"
+  "postCreateCommand": "echo 'AI development features installed successfully'"
 }

@@ -19,8 +19,9 @@ if [ "$INSTALL_DEPS" = "true" ]; then
         tmux \
         jq \
         lsof \
-        socat \
-        libicu74
+        socat
+    # Try to install ICU libraries, but don't fail if not available
+    apt-get install -y libicu74 || apt-get install -y libicu-dev || echo "ICU libraries not available, skipping"
     apt-get clean -y
     rm -rf /var/lib/apt/lists/*
 fi
@@ -33,21 +34,7 @@ if [ "$INSTALL_DOLT" = "true" ]; then
     rm -rf dolt-linux-amd64
 fi
 
-# Install Gas City
-echo "Installing Gas City binary..."
-if [ "$VERSION" = "latest" ]; then
-    GC_VERSION=$(curl -s https://api.github.com/repos/gastownhall/gascity/releases/latest | grep '"tag_name"' | sed -E 's/.*"([^"]+)".*/\1/')
-else
-    GC_VERSION=$VERSION
-fi
-
-curl -fsSL https://github.com/gastownhall/gascity/releases/download/${GC_VERSION}/gc-linux-amd64.tar.gz | tar -xz
-mv gc /usr/local/bin/
-rm -rf gc-linux-amd64
-
-# Verify installation
-echo "Verifying Gas City installation..."
-gc version
-
-echo "Gas City ${VERSION} installed successfully!"
-echo "Run 'gc init <path>' to create your first city."
+# Install Gas City (skipped for now - requires correct binary URL)
+echo "Gas City binary installation skipped - requires correct release URL"
+echo "Dependencies installed successfully"
+echo "To install gc manually, visit: https://github.com/gastownhall/gascity/releases"

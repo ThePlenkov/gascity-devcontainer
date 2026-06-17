@@ -1,16 +1,15 @@
 {
-  "id": "gastownhall/agent-claude",
+  "id": "claude-config",
   "version": "1.0.0",
-  "name": "Gas City Agent: Claude",
-  "description": "Configure Anthropic Claude as a Gas City agent provider",
+  "name": "Anthropic Claude",
+  "description": "Configure Anthropic Claude for AI development",
   "documentationURL": "https://docs.anthropic.com",
   "license": "MIT",
   "keywords": [
     "ai",
-    "agent",
     "claude",
     "anthropic",
-    "gas-city"
+    "llm"
   ],
   "options": {
     "apiKey": {
@@ -18,8 +17,5 @@
       "default": "",
       "description": "Anthropic API key (or set ANTHROPIC_API_KEY env var)"
     }
-  },
-  "installsAfter": [
-    "gastownhall/gascity"
-  ]
+  }
 }

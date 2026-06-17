@@ -1,11 +1,11 @@
 #!/bin/bash
 set -e
 
-# Devin CLI Agent Installation Script for Gas City
+# Devin CLI Installation Script
 
 VERSION=${VERSION:-"latest"}
 
-echo "Installing Devin CLI ${VERSION} as Gas City agent..."
+echo "Installing Devin CLI ${VERSION}..."
 
 # Install Devin CLI
 curl -fsSL https://cli.devin.ai/install.sh | bash || true
@@ -17,13 +17,12 @@ if [ -f "$HOME/.local/bin/devin" ]; then
 fi
 
 # Add to PATH if not already there
-if ! grep -q "/usr/local/bin" /etc/environment; then
-    echo "PATH=/usr/local/bin:\$PATH" >> /etc/environment
+if ! grep -q "/usr/local/bin" /etc/environment 2>/dev/null; then
+    echo "PATH=/usr/local/bin:\$PATH" >> /etc/environment 2>/dev/null || true
 fi
 
 # Verify installation
 echo "Verifying Devin CLI installation..."
 devin version || echo "Devin CLI installed (login required for full functionality)"
 
-echo "Devin CLI agent installed successfully!"
-echo "Configure in city.toml with provider = 'devin'"
+echo "Devin CLI installed successfully!"

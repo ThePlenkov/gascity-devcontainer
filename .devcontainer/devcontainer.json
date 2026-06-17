@@ -1,5 +1,5 @@
 {
-  "name": "Gas City Development",
+  "name": "AI Development with Gas City",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
   "features": {
     "ghcr.io/devcontainers/features/common-utils:2": {
@@ -12,10 +12,10 @@
       "installDeps": true,
       "installDolt": true
     },
-    "./src/agent-devin": {
+    "./src/devin": {
       "version": "latest"
     },
-    "./src/agent-claude": {}
+    "./src/claude": {}
   },
   "customizations": {
     "vscode": {
@@ -25,7 +25,6 @@
       ]
     }
   },
-  "postCreateCommand": "gc init /workspace/gas-city && echo 'Gas City initialized at /workspace/gas-city'",
-  "remoteUser": "vscode",
-  "forwardPorts": [8372, 8080]
+  "postCreateCommand": "echo 'AI development environment ready! Use devin or claude for AI-powered development.'",
+  "remoteUser": "vscode"
 }
