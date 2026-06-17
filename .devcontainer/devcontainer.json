@@ -9,12 +9,15 @@
     },
     "./features/gascity": {
       "autoRegister": true
-    }
+    },
+    "./features/devin": {}
   },
   "forwardPorts": [8080],
   "mounts": [
     "source=${localWorkspaceFolder}/.gc,target=/workspaces/gascity-devcontainer/.gc,type=bind,consistency=cached",
-    "source=${localWorkspaceFolder}/.beads,target=/workspaces/gascity-devcontainer/.beads,type=bind,consistency=cached"
+    "source=${localWorkspaceFolder}/.beads,target=/workspaces/gascity-devcontainer/.beads,type=bind,consistency=cached",
+    "source=${localWorkspaceFolder}/.devin,target=/home/vscode/.devin,type=bind",
+    "source=${localWorkspaceFolder}/.config/devin,target=/home/vscode/.config/devin,type=bind"
   ],
   "customizations": {
     "vscode": {

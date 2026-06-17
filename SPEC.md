@@ -127,6 +127,8 @@ The devcontainer configuration includes explicit mounts for Gas City data direct
 **Why explicit mounts:**
 - `.gc/` contains city state, events, and runtime data
 - `.beads/` contains Dolt database and agent interactions
+- `.devin/` contains Devin CLI configuration and cache
+- `.config/devin/` contains Devin CLI settings
 - `consistency=cached` improves performance for database operations
 - Guarantees data persistence across container rebuilds
 - Separates data from code for cleaner workspace
@@ -147,12 +149,15 @@ The devcontainer configuration includes explicit mounts for Gas City data direct
     },
     "./features/gascity": {
       "autoRegister": true
-    }
+    },
+    "./features/devin": {}
   },
   "forwardPorts": [8080],
   "mounts": [
     "source=${localWorkspaceFolder}/.gc,target=/workspaces/gascity-devcontainer/.gc,type=bind,consistency=cached",
-    "source=${localWorkspaceFolder}/.beads,target=/workspaces/gascity-devcontainer/.beads,type=bind,consistency=cached"
+    "source=${localWorkspaceFolder}/.beads,target=/workspaces/gascity-devcontainer/.beads,type=bind,consistency=cached",
+    "source=${localWorkspaceFolder}/.devin,target=/home/vscode/.devin,type=bind",
+    "source=${localWorkspaceFolder}/.config/devin,target=/home/vscode/.config/devin,type=bind"
   ],
   "customizations": {
     "vscode": {
@@ -173,6 +178,7 @@ The devcontainer configuration includes explicit mounts for Gas City data direct
 3. **Container starts**: Workspace is mounted, `entrypoint.sh` executes
 4. **Auto-registration**: If `autoRegister=true`, `gc register .` runs
 5. **City ready**: Supervisor starts, city is registered and ready for use
+6. **Devin CLI available**: Devin CLI installed and ready for AI-powered development
 
 ## Enforcement SDD (Software Design Document)
 
@@ -284,6 +290,6 @@ All operations are designed to be idempotent:
 
 ## Version History
 
-- **1.2.0** (2026-06-17): Add symlinks for dolt, bd (beads daemon), and tmux, use neutral Dolt identity (DevContainer User/devcontainer@localhost), remove redundant dolt dependency (already included in gascity formula), add port forwarding for supervisor API (8080), add explicit mounts for .gc and .beads data persistence
+- **1.2.0** (2026-06-17): Add symlinks for dolt, bd (beads daemon), and tmux, use neutral Dolt identity (DevContainer User/devcontainer@localhost), remove redundant dolt dependency (already included in gascity formula), add port forwarding for supervisor API (8080), add explicit mounts for .gc and .beads data persistence, add Devin CLI feature with mounts for configuration persistence
 - **1.1.0** (2026-06-17): Add autoRegister option with entrypoint, add dolt dependency, simplify .gitignore
 - **1.0.0** (2026-06-17): Initial specification with install.sh + entrypoint pattern
