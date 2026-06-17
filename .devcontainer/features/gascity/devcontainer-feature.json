@@ -12,9 +12,17 @@
     "gas-city",
     "devin"
   ],
+  "options": {
+    "autoRegister": {
+      "type": "boolean",
+      "default": false,
+      "description": "Automatically register city with supervisor on container startup"
+    }
+  },
+  "entrypoint": "/usr/local/share/gascity/entrypoint.sh",
   "dependsOn": {
     "./features/homebrew": {
-      "packages": ["gastownhall/gascity/gascity"]
+      "packages": ["gastownhall/gascity/gascity", "dolt"]
     }
   },
   "installsAfter": [

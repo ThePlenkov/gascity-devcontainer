@@ -1,0 +1,10 @@
+# Gas City Configuration
+
+[city]
+name = "gascity-devcontainer"
+description = "AI development environment with Gas City"
+
+[[packs]]
+name = "gascity"
+url = "https://github.com/gastownhall/gascity-packs"
+branch = "main"

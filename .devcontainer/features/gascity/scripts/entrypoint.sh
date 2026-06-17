@@ -1,0 +1,30 @@
+#!/bin/bash
+set -e
+
+# Gas City Entrypoint Script
+# Runs at container startup to register city
+
+echo "Gas City entrypoint: registering city..."
+
+# Read config options saved by install.sh
+AUTOREGISTER=$(cat /usr/local/share/gascity/autoregister_enabled 2>/dev/null || echo "false")
+
+echo "AutoRegister: ${AUTOREGISTER}"
+
+# Try to find and navigate to workspace
+if [ -d "/workspaces/gascity-devcontainer" ]; then
+    cd /workspaces/gascity-devcontainer
+elif [ -d "/workspaces/$(basename ${PWD})" ]; then
+    cd /workspaces/$(basename ${PWD})
+fi
+
+if [ "${AUTOREGISTER}" = "true" ]; then
+    echo "Registering city with supervisor..."
+    # Configure Dolt identity (required for gc register)
+    dolt config --global --add user.name "Devin"
+    dolt config --global --add user.email "devin@example.com"
+    gc register .
+    echo "City registered and ready!"
+else
+    echo "Auto-register skipped"
+fi

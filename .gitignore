@@ -1,14 +1,9 @@
 # Gas City
 .gc/
-.beads/*
-!.beads/config.yaml
-!.beads/metadata.json
-!.beads/identity.toml
+.beads/
 hooks/
 .runtime/
 
 # Beads / Dolt files (added by bd init)
 .dolt/
 *.db
-.beads-credential-key
-.beads/proxieddb/

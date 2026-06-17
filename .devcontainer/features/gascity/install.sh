@@ -15,13 +15,7 @@ if ! command -v gc &> /dev/null; then
 fi
 
 echo "gc found at: $(which gc)"
-echo "gc version: $(gc --version)"
-
-# Validate installation
-echo "Validating Gas City installation..."
-gc doctor || {
-    echo "Warning: gc doctor reported issues. This may affect Gas City functionality."
-}
+echo "gc version: $(gc version)"
 
 # Check if gc is accessible globally
 if [ ! -f "/usr/local/bin/gc" ]; then
@@ -29,5 +23,12 @@ if [ ! -f "/usr/local/bin/gc" ]; then
     ln -sf /home/linuxbrew/.linuxbrew/bin/gc /usr/local/bin/gc
 fi
 
+# Copy entrypoint script to a location where it can be executed
+mkdir -p /usr/local/share/gascity
+cp scripts/entrypoint.sh /usr/local/share/gascity/entrypoint.sh
+chmod +x /usr/local/share/gascity/entrypoint.sh
+
+# Save autoRegister option for entrypoint to use
+echo "${AUTOREGISTER}" > /usr/local/share/gascity/autoregister_enabled
+
 echo "Gas City installed successfully!"
-echo "Configure packs in city.toml and run 'gc start' to begin"

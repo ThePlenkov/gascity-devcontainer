@@ -7,7 +7,9 @@
       "installOhMyZsh": true,
       "upgradePackages": true
     },
-    "./features/gascity": {}
+    "./features/gascity": {
+      "autoRegister": true
+    }
   },
   "customizations": {
     "vscode": {
@@ -17,6 +19,5 @@
       ]
     }
   },
-  "postCreateCommand": "echo 'AI development environment ready! Use devin or claude for AI-powered development.'",
   "remoteUser": "vscode"
 }
