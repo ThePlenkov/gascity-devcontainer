@@ -1,0 +1,24 @@
+{
+  "id": "gastownhall/agent-devin",
+  "version": "1.0.0",
+  "name": "Gas City Agent: Devin",
+  "description": "Install Devin CLI as a Gas City agent provider",
+  "documentationURL": "https://devin.ai",
+  "license": "MIT",
+  "keywords": [
+    "ai",
+    "agent",
+    "devin",
+    "gas-city"
+  ],
+  "options": {
+    "version": {
+      "type": "string",
+      "default": "latest",
+      "description": "Devin CLI version to install"
+    }
+  },
+  "installsAfter": [
+    "gastownhall/gascity"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "id": "gastownhall/gascity",
+  "version": "1.0.0",
+  "name": "Gas City",
+  "description": "Install Gas City - AI agent orchestration platform with supervisor, beads, and agent management",
+  "documentationURL": "https://github.com/gastownhall/gascity",
+  "license": "MIT",
+  "keywords": [
+    "ai",
+    "agents",
+    "orchestration",
+    "gas-city",
+    "devin"
+  ],
+  "options": {
+    "version": {
+      "type": "string",
+      "default": "latest",
+      "description": "Gas City version to install (latest or specific tag)"
+    },
+    "installDeps": {
+      "type": "boolean",
+      "default": true,
+      "description": "Install runtime dependencies (tmux, jq, git, lsof)"
+    },
+    "installDolt": {
+      "type": "boolean",
+      "default": true,
+      "description": "Install Dolt database for beads storage"
+    }
+  },
+  "installsAfter": [
+    "ghcr.io/devcontainers/features/common-utils"
+  ]
+}

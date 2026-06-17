@@ -1,0 +1,31 @@
+{
+  "name": "Gas City Development",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "installOhMyZsh": true,
+      "upgradePackages": true
+    },
+    "./src/gascity": {
+      "version": "latest",
+      "installDeps": true,
+      "installDolt": true
+    },
+    "./src/agent-devin": {
+      "version": "latest"
+    },
+    "./src/agent-claude": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "github.copilot",
+        "ms-vscode.vscode-typescript-next"
+      ]
+    }
+  },
+  "postCreateCommand": "gc init /workspace/gas-city && echo 'Gas City initialized at /workspace/gas-city'",
+  "remoteUser": "vscode",
+  "forwardPorts": [8372, 8080]
+}
