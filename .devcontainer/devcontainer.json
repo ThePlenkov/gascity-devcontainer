@@ -7,15 +7,7 @@
       "installOhMyZsh": true,
       "upgradePackages": true
     },
-    "./src/gascity": {
-      "version": "latest",
-      "installDeps": true,
-      "installDolt": true
-    },
-    "./src/devin": {
-      "version": "latest"
-    },
-    "./src/claude": {}
+    "./features/devin": {}
   },
   "customizations": {
     "vscode": {
