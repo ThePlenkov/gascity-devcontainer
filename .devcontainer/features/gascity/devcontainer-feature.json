@@ -12,6 +12,11 @@
     "gas-city",
     "devin"
   ],
+  "dependsOn": {
+    "./features/homebrew": {
+      "packages": ["gastownhall/gascity/gascity"]
+    }
+  },
   "installsAfter": [
     "ghcr.io/devcontainers/features/common-utils"
   ]
