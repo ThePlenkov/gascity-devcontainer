@@ -11,6 +11,7 @@
       "autoRegister": true
     }
   },
+  "forwardPorts": [8080],
   "customizations": {
     "vscode": {
       "extensions": [

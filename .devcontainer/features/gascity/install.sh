@@ -35,6 +35,12 @@ if [ -f "/home/linuxbrew/.linuxbrew/Cellar/beads/1.0.5/bin/bd" ]; then
     ln -sf /home/linuxbrew/.linuxbrew/Cellar/beads/1.0.5/bin/bd /usr/local/bin/bd
 fi
 
+# Add tmux to PATH
+if [ -f "/home/linuxbrew/.linuxbrew/bin/tmux" ]; then
+    echo "Creating symlink for tmux in /usr/local/bin..."
+    ln -sf /home/linuxbrew/.linuxbrew/bin/tmux /usr/local/bin/tmux
+fi
+
 # Copy entrypoint script to a location where it can be executed
 mkdir -p /usr/local/share/gascity
 cp scripts/entrypoint.sh /usr/local/share/gascity/entrypoint.sh

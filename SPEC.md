@@ -60,8 +60,9 @@ The `install.sh` script runs during the container image build:
 2. Creates symlink for global accessibility (`/usr/local/bin/gc`)
 3. Creates symlink for dolt (`/usr/local/bin/dolt`) - installed as gascity dependency
 4. Creates symlink for `bd` (beads daemon) for global accessibility (`/usr/local/bin/bd`) - installed as gascity dependency
-5. Copies `entrypoint.sh` to `/usr/local/share/gascity/entrypoint.sh`
-6. **Persists autoRegister option** to file for runtime access:
+5. Creates symlink for tmux (`/usr/local/bin/tmux`) - installed as gascity dependency
+6. Copies `entrypoint.sh` to `/usr/local/share/gascity/entrypoint.sh`
+7. **Persists autoRegister option** to file for runtime access:
    - `AUTOREGISTER` → `/usr/local/share/gascity/autoregister_enabled`
 
 **Key insight:** The `autoRegister` option from `devcontainer-feature.json` is available as an environment variable during install.sh execution but not during entrypoint execution. Persisting it to a file bridges this gap.
@@ -130,6 +131,7 @@ This ensures:
       "autoRegister": true
     }
   },
+  "forwardPorts": [8080],
   "customizations": {
     "vscode": {
       "extensions": [
@@ -260,6 +262,6 @@ All operations are designed to be idempotent:
 
 ## Version History
 
-- **1.2.0** (2026-06-17): Add symlinks for dolt and bd (beads daemon), use neutral Dolt identity (DevContainer User/devcontainer@localhost), remove redundant dolt dependency (already included in gascity formula)
+- **1.2.0** (2026-06-17): Add symlinks for dolt, bd (beads daemon), and tmux, use neutral Dolt identity (DevContainer User/devcontainer@localhost), remove redundant dolt dependency (already included in gascity formula), add port forwarding for supervisor API (8080)
 - **1.1.0** (2026-06-17): Add autoRegister option with entrypoint, add dolt dependency, simplify .gitignore
 - **1.0.0** (2026-06-17): Initial specification with install.sh + entrypoint pattern
