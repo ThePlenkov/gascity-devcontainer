@@ -10,10 +10,9 @@ if ! command -v curl &> /dev/null; then
 fi
 
 # Use official install script (ignore login errors in non-interactive mode)
-echo "Downloading and installing Devin CLI..."
 curl -fsSL https://cli.devin.ai/install.sh | bash || true
 
-# Copy to global location if needed
+# Ensure devin is accessible
 if [ -f "$HOME/.local/bin/devin" ] && [ ! -f "/usr/local/bin/devin" ]; then
     cp "$HOME/.local/bin/devin" /usr/local/bin/
     chmod +x /usr/local/bin/devin
