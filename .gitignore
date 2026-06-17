@@ -3,6 +3,8 @@
 .beads/
 hooks/
 .runtime/
+.claude/
+.agents/
 
 # Beads / Dolt files (added by bd init)
 .dolt/
