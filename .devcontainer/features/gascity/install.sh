@@ -34,7 +34,16 @@ if [ "$INSTALL_DOLT" = "true" ]; then
     rm -rf dolt-linux-amd64
 fi
 
-# Install Gas City (skipped for now - requires correct binary URL)
-echo "Gas City binary installation skipped - requires correct release URL"
-echo "Dependencies installed successfully"
-echo "To install gc manually, visit: https://github.com/gastownhall/gascity/releases"
+# Install Gas City binary
+echo "Installing Gas City binary..."
+# Get latest version from GitHub
+LATEST_VERSION=$(curl -s https://api.github.com/repos/gastownhall/gascity/releases/latest | grep '"tag_name"' | sed -E 's/.*"([^"]+)".*/\1/' || echo "v1.2.1")
+
+echo "Downloading Gas City ${LATEST_VERSION}..."
+curl -fsSL "https://github.com/gastownhall/gascity/releases/download/${LATEST_VERSION}/gascity_${LATEST_VERSION#v}_linux_amd64.tar.gz" -o /tmp/gascity.tar.gz
+tar -xzf /tmp/gascity.tar.gz -C /tmp/
+mv /tmp/gc /usr/local/bin/
+rm /tmp/gascity.tar.gz
+
+echo "Gas City installed successfully!"
+echo "Run 'gc --help' to get started"

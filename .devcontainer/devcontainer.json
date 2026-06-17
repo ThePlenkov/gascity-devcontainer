@@ -7,7 +7,8 @@
       "installOhMyZsh": true,
       "upgradePackages": true
     },
-    "./features/devin": {}
+    "./features/devin": {},
+    "./features/gascity": {}
   },
   "customizations": {
     "vscode": {
