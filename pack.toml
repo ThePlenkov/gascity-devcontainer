@@ -1,0 +1,7 @@
+[pack]
+name = "gascity-devcontainer"
+schema = 2
+
+[[named_session]]
+template = "mayor"
+mode = "always"

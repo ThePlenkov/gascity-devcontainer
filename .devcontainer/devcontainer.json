@@ -7,7 +7,15 @@
       "installOhMyZsh": true,
       "upgradePackages": true
     },
-    "./features/gascity": {}
+    "./features/gascity": {
+      "config": {
+        "autoStart": true,
+        "configureDolt": true
+      },
+      "buildPack": {
+        "install": true
+      }
+    }
   },
   "customizations": {
     "vscode": {
