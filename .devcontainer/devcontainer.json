@@ -10,7 +10,8 @@
     "./features/gascity": {
       "autoRegister": true
     },
-    "./features/devin": {}
+    "./features/devin": {},
+    "./features/sacp-conductor": {}
   },
   "forwardPorts": [8080],
   "mounts": [
