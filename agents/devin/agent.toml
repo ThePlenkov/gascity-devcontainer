@@ -1,3 +1,4 @@
 session = "acp"
 provider = "devin"
 default_sling_formula = "mol-do-work"
+work_query = "bd ready --unassigned --limit=1"
