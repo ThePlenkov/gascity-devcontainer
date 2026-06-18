@@ -1,0 +1,14 @@
+{
+  "SessionEnd": [
+    {
+      "matcher": "",
+      "hooks": [
+        {
+          "type": "command",
+          "command": ".devin/cleanup-acp-sessions.sh --auto --all",
+          "timeout": 30
+        }
+      ]
+    }
+  ]
+}

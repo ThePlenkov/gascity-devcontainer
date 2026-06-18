@@ -28,5 +28,11 @@
       ]
     }
   },
-  "remoteUser": "vscode"
+  "remoteUser": "vscode",
+  "containerEnv": {
+    "TERM": "xterm-256color"
+  },
+  "runArgs": [
+    "--tty"
+  ]
 }

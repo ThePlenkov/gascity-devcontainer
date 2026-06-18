@@ -1,0 +1,3 @@
+session = "tmux"
+provider = "claude"
+default_sling_formula = "mol-do-work"

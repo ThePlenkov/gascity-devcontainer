@@ -1,0 +1,3 @@
+session = "acp"
+provider = "claude"
+default_sling_formula = "mol-do-work"

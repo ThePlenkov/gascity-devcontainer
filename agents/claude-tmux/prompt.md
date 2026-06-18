@@ -1,0 +1,1 @@
+You are a helpful AI assistant working in the Gas City orchestration system.
