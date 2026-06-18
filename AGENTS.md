@@ -11,8 +11,9 @@
 
 #### Allowed Documentation Locations
 1. **Root level** - Only core project files (README.md, SPEC.md, AGENTS.md)
-2. **docs/** - Detailed documentation (if needed)
-3. **tmp/** - Temporary documentation (gitignored, for investigation/debugging)
+2. **docs/memory/** - Memory/timestamped notes and solutions (tracked in git)
+3. **docs/** - Detailed documentation (if needed)
+4. **tmp/** - Temporary documentation (gitignored, for investigation/debugging)
 
 #### File Creation Rules
 - **NEVER** create .md files in root without approval
@@ -34,7 +35,15 @@
 - Issue templates
 - **RULE**: All files in tmp/ are gitignored and temporary
 
-### 3. Detailed Documentation (docs/ - if needed)
+### 3. Memory/Timestamped Notes (docs/memory/)
+- Investigation solutions and findings
+- Debug session results
+- Integration solutions
+- **RULE**: Use date at START of filename: `2026-06-18-solution.md`
+- **RULE**: Add full timestamp at start of file content: `# Timestamp: YYYY-MM-DDTHH:MM:SSZ`
+- **RULE**: Files are tracked in git for documentation
+
+### 4. Detailed Documentation (docs/ - if needed)
 - Architecture documentation
 - API documentation
 - Contributing guidelines
@@ -69,23 +78,34 @@
 - ✅ AGENTS.md - Documentation system
 
 ### Temporary (tmp/)
-- 📋 ACP_DEBUG_ANALYSIS.md - Devin ACP investigation
 - 📋 DEBUG_REPORT.md - Gas City debug report
-- 📋 FINAL_DEBUG_REPORT.md - Final analysis
 - 📋 ISSUE_TEMPLATE.md - GitHub issue template
 - 📋 UPDATED_ISSUE.md - Issue update content
 - 📋 UPDATE_COMMENT.md - GitHub comment content
+- 🛠️ test-acp-agent.sh - Test ACP shell script
+- 🛠️ test-acp-agent.py - Test ACP Python agent
+- 🛠️ devin-acp-debug.sh - Debug wrapper for devin acp
+- 🛠️ test-sacp-conductor.sh - Test sacp-conductor shell script
+- 🛠️ test-sacp-standalone.py - Test sacp-conductor standalone Python
+- 🛠️ test-sacp-session.py - Test sacp-conductor session handling Python
+- 🛠️ sacp-wrapper.sh - Wrapper script for sacp-conductor
+
+### Memory/Timestamped (docs/memory/)
+- 📝 2026-06-18-acpx-devin-solution.md - acpx + devin integration solution
+- 📝 2026-06-18-gc-acpx-devin-integration.md - Gas City + acpx + devin integration attempt
+- 📝 2026-06-18-sacp-conductor-devin-solution.md - sacp-conductor + devin integration solution
 
 ### Documentation Directories
-- ❌ docs/ - Not created yet (not needed for current project complexity)
+- ✅ docs/memory/ - Memory/timestamped notes (tracked in git)
 
 ## Rules Summary
 
 1. **Root .md files**: Only README.md, SPEC.md, AGENTS.md allowed
 2. **Temporary work**: Always use tmp/ directory
-3. **Permanent docs**: Update AGENTS.md first, then create
-4. **Cleanup**: Remove tmp/ files when investigation complete
-5. **System**: All documentation must follow this structure
+3. **Memory notes**: Use docs/memory/ with timestamps for investigation solutions
+4. **Permanent docs**: Update AGENTS.md first, then create
+5. **Cleanup**: Remove tmp/ files when investigation complete
+6. **System**: All documentation must follow this structure
 
 ## Change Process
 

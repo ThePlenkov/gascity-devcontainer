@@ -1,35 +1,26 @@
 [workspace]
 
 [providers]
+
 [providers.devin]
-command = "devin"
-acp_command = "devin"
-acp_args = ["acp"]
+command = "sacp-conductor"
+ready_delay_ms = 0
 supports_acp = true
 resume_flag = "--resume"
+acp_command = "sacp-conductor"
+acp_args = ["agent", "--name", "devin", "devin acp"]
 
-[providers.claude]
-command = "echo"
-acp_command = "echo"
-acp_args = ["acp-mode"]
-supports_acp = true
-
-[session.acp]
-handshake_timeout = "60s"
-nudge_busy_timeout = "120s"
-
-[[agent]]
-name = "devin"
-prompt_template = ".gc/system/packs/core/assets/prompts/pool-worker.md"
-provider = "devin"
-session = "acp"
-default_sling_formula = "mol-do-work"
-
-[[agent]]
-name = "test-claude"
-provider = "claude"
-session = "acp"
-default_sling_formula = "mol-do-work"
+[providers.devin-tmux]
+command = "devin"
+ready_delay_ms = 0
+resume_flag = "--resume"
+args = ["--model", "swe-1.6"]
 
 [beads]
 provider = "file"
+
+[session]
+[session.acp]
+handshake_timeout = "60s"
+nudge_busy_timeout = "120s"
+output_buffer_lines = 0
