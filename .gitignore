@@ -1,17 +1,7 @@
-# Gas City
+# Gas City runtime
 .gc/
-hooks/
-.runtime/
-tmp/
+.beads/
 
-# Beads / Dolt files (added by bd init)
-.dolt/
-*.db
-
-# Beads / Dolt files (added by bd init)
-.beads-credential-key
-.beads/proxieddb/
-
-# Gas City
-.beads/*
-!.beads/identity.toml
+# Build artifacts
+/target/
+/acpr

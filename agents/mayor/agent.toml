@@ -1,3 +1,0 @@
-session = "tmux"
-provider = "devin-tmux"
-default_sling_formula = "mol-do-work"
