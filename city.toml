@@ -1,0 +1,7 @@
+[city]
+name = "gascity-devcontainer"
+description = "Gas City development environment for testing"
+
+[city.metadata]
+environment = "development"
+purpose = "testing"

@@ -1,0 +1,3 @@
+[submodule "packages/console-ui"]
+	path = packages/console-ui
+	url = https://github.com/ThePlenkov/gascity-play.git

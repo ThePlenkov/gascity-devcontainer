@@ -2,6 +2,20 @@
 .gc/
 .beads/
 
+# Node modules
+node_modules/
+
 # Build artifacts
 /target/
 /acpr
+.nx/installation
+.nx/cache
+.nx/workspace-data
+.nx/self-healing
+.nx/migrate-runs
+
+# Beads / Dolt files (added by bd init)
+.dolt/
+*.db
+.beads-credential-key
+.beads/proxieddb/

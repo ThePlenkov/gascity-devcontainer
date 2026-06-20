@@ -13,7 +13,7 @@
     "./features/devin": {},
     "./features/sacp-conductor": {}
   },
-  "forwardPorts": [8080],
+  "forwardPorts": [8080, 8372],
   "mounts": [
     "source=${localWorkspaceFolder}/.gc,target=/workspaces/gascity-devcontainer/.gc,type=bind,consistency=cached",
     "source=${localWorkspaceFolder}/.beads,target=/workspaces/gascity-devcontainer/.beads,type=bind,consistency=cached",
