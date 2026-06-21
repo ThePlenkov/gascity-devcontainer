@@ -1,4 +1,16 @@
 {
+  "name": "gascity-devcontainer",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "nx run gc-console:dev",
+    "build": "nx run gc-console:build",
+    "lint": "nx run gc-console:lint",
+    "format": "nx run gc-console:format",
+    "test": "nx run gc-console:test",
+    "preview": "nx run gc-console:preview"
+  },
   "devDependencies": {
     "@nx/workspace": "^23.0.0",
     "nx": "^23.0.0"

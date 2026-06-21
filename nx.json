@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "installation": {
+    "version": "23.0.0"
+  },
   "cli": {
     "packageManager": "bun"
   },
@@ -31,5 +34,9 @@
       "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
     }
   },
-  "plugins": []
+  "plugins": [],
+  "workspaceLayout": {
+    "appsDir": "packages",
+    "libsDir": "packages"
+  }
 }
